@@ -1,0 +1,15 @@
+syntax = "proto3";
+//import "google/protobuf/any.proto";
+
+package nightingale;
+
+service SomeService {
+    rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) {}
+}
+
+message HealthCheckRequest {
+}
+
+message HealthCheckResponse {
+    bool healthy = 1;
+}
