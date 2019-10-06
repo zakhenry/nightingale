@@ -4,7 +4,15 @@
     https://www.rust-lang.org/tools/install
 2. Build & run
     ```sh
-    cargo run
+    
+    rustup install beta
+    
+    rustup component add rustfmt --toolchain beta
+    
+    cargo +beta run --bin nightingale
+    
+    cargo +beta run --bin helloworld-server
+    
     ```
 3. Builder docker image
     ```sh
