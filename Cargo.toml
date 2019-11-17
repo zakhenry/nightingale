@@ -15,7 +15,7 @@ name = "helloworld-client"
 path = "src/helloworld/client.rs"
 
 [dependencies]
-hyper = "0.13.0-alpha.3"
+clap = {version = "2.33.0", default-features = false }
 
 tonic = "0.1.0-alpha.5"
 bytes = "0.4"

@@ -1,5 +1,8 @@
 use tonic::{transport::Server, Request, Response, Status};
 
+use futures::Stream;
+use std::pin::Pin;
+
 pub mod hello_world {
     tonic::include_proto!("helloworld");
 }
@@ -13,12 +16,13 @@ pub mod nightingale {
     tonic::include_proto!("grpc.health.v1");
 }
 
-use nightingale::{server::{Health, HealthServer}, HealthCheckResponse, HealthCheckRequest, health_check_response};
-
-use std::collections::VecDeque;
+use nightingale::{
+    health_check_response,
+    server::{Health, HealthServer},
+    HealthCheckRequest, HealthCheckResponse,
+};
 
 type HealthCheckResult<T> = Result<Response<T>, Status>;
-type ServerStreamingHealthCheckStream = VecDeque<Result<HealthCheckResponse, Status>>;
 
 #[derive(Default)]
 pub struct MyGreeter {
@@ -45,28 +49,29 @@ impl Greeter for MyGreeter {
 }
 
 #[derive(Default)]
-pub struct ExampleServer;
+pub struct ExampleServer {
+}
 
 #[tonic::async_trait]
 impl Health for ExampleServer {
-
-    async fn check(&self, request: Request<HealthCheckRequest>) -> Result<Response<HealthCheckResponse>, Status> {
+    async fn check(
+        &self,
+        request: Request<HealthCheckRequest>,
+    ) -> HealthCheckResult<HealthCheckResponse> {
         println!("Got healthcheck request: {:?}", request);
 
         let res = HealthCheckResponse {
-            status: health_check_response::ServingStatus::Serving as i32
+            status: health_check_response::ServingStatus::Serving as i32,
         };
 
         Ok(Response::new(res))
     }
 
-//    async fn watch(
-//        &self,
-//        _: Request<HealthCheckRequest>,
-//    ) -> HealthCheckResult<ServerStreamingHealthCheckStream> {
-//        Err(Status::unimplemented("not implemented"))
-//    }
+    type WatchStream = Pin<Box<dyn Stream<Item = Result<HealthCheckResponse, Status>> + Send + Sync>>;
 
+    async fn watch(&self, _: Request<HealthCheckRequest>) -> HealthCheckResult<Self::WatchStream> {
+        Err(Status::unimplemented("not implemented"))
+    }
 }
 
 #[tokio::main]
