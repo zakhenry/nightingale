@@ -16,7 +16,6 @@ pub mod nightingale {
 use nightingale::{server::{Health, HealthServer}, HealthCheckResponse, HealthCheckRequest, health_check_response};
 
 use std::collections::VecDeque;
-use futures_util::join;
 
 type HealthCheckResult<T> = Result<Response<T>, Status>;
 type ServerStreamingHealthCheckStream = VecDeque<Result<HealthCheckResponse, Status>>;
@@ -73,16 +72,18 @@ impl Health for ExampleServer {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = "[::1]:50051".parse().unwrap();
-    let greeter = MyGreeter::default();
 
-    let greeter_server = Server::builder()
-        .serve(addr, GreeterServer::new(greeter));
+    let greeter = MyGreeter::default();
+    let greeter_server = GreeterServer::new(greeter);
 
     let example = ExampleServer::default();
-    let health_server = Server::builder()
-        .serve(addr, HealthServer::new(example));
+    let health_server = HealthServer::new(example);
 
-    join!(greeter_server, health_server);
+    Server::builder()
+        .add_service(greeter_server)
+        .add_service(health_server)
+        .serve(addr)
+        .await?;
 
     Ok(())
 }

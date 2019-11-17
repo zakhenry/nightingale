@@ -23,7 +23,7 @@ async fn echo(req: Request<Body>) -> Result<Response<Body>, hyper::Error> {
         // Serve some instructions at /
         (&Method::GET, "/") => {
 
-            let client_connection = GreeterClient::connect("http://[::1]:50051");
+            let client_connection = GreeterClient::connect("http://[::1]:50051").await;
 
             let request = tonic::Request::new(HelloRequest {
                 name: "hello".into(),
@@ -51,7 +51,7 @@ async fn echo(req: Request<Body>) -> Result<Response<Body>, hyper::Error> {
 
         (&Method::GET, "/healthcheck") => {
 
-            let client_connection = HealthClient::connect("http://[::1]:50051");
+            let client_connection = HealthClient::connect("http://[::1]:50051").await;
 
             let request = tonic::Request::new(HealthCheckRequest {
                 service: "any".into()
