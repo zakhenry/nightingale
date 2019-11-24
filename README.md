@@ -1,4 +1,4 @@
-# Nightingale
+# ![Nightingale logo](/doc/logo.svg) Nightingale
 Tiny binary for gRPC services for [`HEALTHCHECK` docker command](https://docs.docker.com/engine/reference/builder/#healthcheck) which calls the [gRPC recommended health check service](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
 
 # Installation
@@ -8,7 +8,7 @@ In your `Dockerfile` add the following lines (this is using the [multi stage bui
 ```
 COPY --from=nightingale:latest /nightingale /nightingale
 
-HEALTHCHECK CMD nightingale
+HEALTHCHECK CMD /nightingale --host 0.0.0.0 --port 50051
 ```
 
 ## Options
