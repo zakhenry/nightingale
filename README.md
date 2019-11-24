@@ -1,9 +1,9 @@
 # ![Nightingale](/doc/logo.svg)
 Tiny binary for gRPC services for [`HEALTHCHECK` docker command](https://docs.docker.com/engine/reference/builder/#healthcheck) which calls the [gRPC recommended health check service](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
 
-![MicroBadger Size (tag)](https://img.shields.io/microbadger/image-size/xiphiaz/nightingale/latest)
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/xiphiaz/nightingale)
-![GitHub](https://img.shields.io/github/license/zakhenry/nightingale)
+[![Build Status](https://github.com/zakhenry/nightingale/workflows/Continuous%20integration/badge.svg)](https://github.com/zakhenry/nightingale/actions)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/xiphiaz/nightingale)](https://hub.docker.com/repository/docker/xiphiaz/nightingale/builds)
+[![GitHub](https://img.shields.io/github/license/zakhenry/nightingale)](https://raw.githubusercontent.com/zakhenry/nightingale/master/LICENSE)
 
 # Installation
 
