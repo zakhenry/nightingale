@@ -1,0 +1,15 @@
+Nightingale 0.0.0
+Zak Henry @zak
+Simple, fast and tiny healthcheck cli for gRPC services
+
+USAGE:
+    nightingale [OPTIONS] --host <host> --port <port>
+
+FLAGS:
+        --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -h, --host <host>          Set host to use [default: [::1]]
+    -p, --port <port>          Set port to use [default: 50051]
+    -s, --service <service>    Which gRPC service request healthcheck for [default: ]
