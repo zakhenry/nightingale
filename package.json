@@ -1,0 +1,52 @@
+{
+  "name": "nightingale",
+  "version": "1.0.0",
+  "description": "gRPC healthchecker for docker HEALTHCHECK command",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {
+    "ansi-styles": "^3.2.1",
+    "balanced-match": "^1.0.0",
+    "chalk": "^2.4.2",
+    "brace-expansion": "^1.1.11",
+    "color-convert": "^1.9.3",
+    "color-name": "^1.1.3",
+    "commander": "^2.20.3",
+    "concat-map": "^0.0.1",
+    "embedme": "^1.18.1",
+    "escape-string-regexp": "^1.0.5",
+    "fs.realpath": "^1.0.0",
+    "gitignore-parser": "^0.0.2",
+    "glob": "^7.1.6",
+    "has-flag": "^3.0.0",
+    "inherits": "^2.0.4",
+    "inflight": "^1.0.6",
+    "once": "^1.4.0",
+    "minimatch": "^3.0.4",
+    "path-is-absolute": "^1.0.1",
+    "supports-color": "^5.5.0",
+    "wrappy": "^1.0.2"
+  },
+  "devDependencies": {
+    "embedme": "1.18.1"
+  },
+  "scripts": {
+    "build": "cargo +beta build",
+    "test": "yarn build && yarn readme:write-deps && yarn readme:check",
+    "readme:write-deps": "./target/debug/nightingale --help > doc/help-output.txt",
+    "readme:build": "embedme README.md",
+    "readme:check": "yarn readme:build --verify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakhenry/nightingale.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zakhenry/nightingale/issues"
+  },
+  "homepage": "https://github.com/zakhenry/nightingale#readme"
+}

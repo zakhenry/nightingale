@@ -16,7 +16,20 @@ HEALTHCHECK CMD /nightingale --host 0.0.0.0 --port 50051
 ```
 
 ## Options
-@todo derive from binary directly?
+<!-- embedme doc/help-output.txt#L5-L15 -->
+```
+USAGE:
+    nightingale [OPTIONS] --host <host> --port <port>
+
+FLAGS:
+        --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -h, --host <host>          Set host to use [default: [::1]]
+    -p, --port <port>          Set port to use [default: 50051]
+    -s, --service <service>    Which gRPC service request healthcheck for [default: ]
+```
 
 # Contributing
 
