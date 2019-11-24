@@ -6,7 +6,7 @@ Tiny binary for gRPC services for [`HEALTHCHECK` docker command](https://docs.do
 In your `Dockerfile` add the following lines (this is using the [multi stage build strategy](https://docs.docker.com/develop/develop-images/multistage-build/))
 
 ```
-COPY --from=nightingale:latest /nightingale /nightingale
+COPY --from=xiphiaz/nightingale:latest /nightingale /nightingale
 
 HEALTHCHECK CMD /nightingale --host 0.0.0.0 --port 50051
 ```
