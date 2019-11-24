@@ -1,18 +1,10 @@
 [package]
 name = "nightingale"
 version = "0.1.0"
-authors = ["Zak Henry <zak@cloudnc.com>"]
+authors = ["Zak Henry <zak.henry@gmail.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[[bin]]
-name = "helloworld-server"
-path = "src/helloworld/server.rs"
-
-[[bin]]
-name = "helloworld-client"
-path = "src/helloworld/client.rs"
 
 [dependencies]
 clap = {version = "2.33.0", default-features = false }

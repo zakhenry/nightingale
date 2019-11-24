@@ -1,4 +1,4 @@
-FROM ekidd/rust-musl-builder:nightly AS build
+FROM ekidd/rust-musl-builder:beta AS build
 COPY . ./
 RUN sudo chown -R rust:rust .
 RUN RUSTFLAGS='-C link-arg=-s' cargo +beta build --release

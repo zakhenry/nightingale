@@ -1,25 +1,34 @@
+# Nightingale
+Tiny binary for gRPC services for [`HEALTHCHECK` docker command](https://docs.docker.com/engine/reference/builder/#healthcheck) which calls the [gRPC recommended health check service](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
+
 # Installation
 
-1. Install rust 
+In your `Dockerfile` add the following lines (this is using the [multi stage build strategy](https://docs.docker.com/develop/develop-images/multistage-build/))
+
+```
+COPY --from=nightingale:latest /nightingale /nightingale
+
+HEALTHCHECK CMD nightingale
+```
+
+## Options
+@todo derive from binary directly?
+
+# Contributing
+
+1. Install rust
     https://www.rust-lang.org/tools/install
 2. Build & run
     ```sh
-    
+
     rustup install beta
-    
+
     rustup component add rustfmt --toolchain beta
-    
+
     cargo +beta run --bin nightingale
-    
-    cargo +beta run --bin helloworld-server
-    
+
     ```
 3. Builder docker image
     ```sh
     docker build -t nightingale:latest .
     ```
-4. Run docker image
-    ```sh
-    docker run -it -p 0.0.0.0:8088:8181 nightingale
-    ```
-5. Call yourself a [Rustacean](https://en.wiktionary.org/wiki/Rustacean)
