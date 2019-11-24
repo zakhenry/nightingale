@@ -1,4 +1,4 @@
-# ![Nightingale logo](/doc/logo.svg) Nightingale
+# ![Nightingale](/doc/logo.svg)
 Tiny binary for gRPC services for [`HEALTHCHECK` docker command](https://docs.docker.com/engine/reference/builder/#healthcheck) which calls the [gRPC recommended health check service](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
 
 # Installation
