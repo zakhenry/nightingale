@@ -8,7 +8,7 @@ Tiny binary for gRPC services for [`HEALTHCHECK` docker command](https://docs.do
 # Features
 * Self contained binary
     * will work in `FROM scratch` images
-    * same binary will work most <sup>all?</sup> linux x86_64 based images
+    * same binary will work in most <sup>all?</sup> linux x86_64 based images
 * Small - `2.3mb` statically linked binary
 * Quick installation using docker multi-build pattern
 
