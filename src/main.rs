@@ -69,30 +69,30 @@ async fn main() -> Result<(), ()> {
                 match status {
                     Some(health_check_response::ServingStatus::NotServing) => {
                         println!("not serving!");
-                        return Err(());
+                        Err(());
                     }
                     Some(health_check_response::ServingStatus::Serving) => {
                         println!("serving :)");
-                        return Ok(());
+                        Ok(());
                     }
                     Some(health_check_response::ServingStatus::Unknown) => {
                         println!("unknown");
-                        return Err(());
+                        Err(());
                     }
                     None => {
                         println!("no status");
-                        return Err(());
+                        Err(());
                     }
                 }
             }
             Err(err) => {
                 println!("SERVICE ERR={:?}", err);
-                return Err(());
+                Err(());
             }
         },
         Err(err) => {
             println!("CLIENT ERR={:?}", err);
-            return Err(());
+            Err(());
         }
     }
 }
