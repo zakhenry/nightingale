@@ -24,7 +24,7 @@
     "inherits": "^2.0.4",
     "inflight": "^1.0.6",
     "once": "^1.4.0",
-    "minimatch": "^3.0.4",
+    "minimatch": "^3.0.5",
     "path-is-absolute": "^1.0.1",
     "supports-color": "^5.5.0",
     "wrappy": "^1.0.2"
